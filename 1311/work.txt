@@ -1,0 +1,171 @@
+Script started on 2020-11-13 14:12:06+0530
+]0;joshena@joshena: ~/ceccs18c33/sqllab/1311[01;32mjoshena@joshena[00m:[01;34m~/ceccs18c33/sqllab/1311[00m$ mysql[K[K[K[K[Knano app.txtcd ceccs18c33[1Pnano app.txt[3P.bashmysql-workbenchexit[Kmysql -u root -p
+Enter password: 
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+]0;joshena@joshena: ~/ceccs18c33/sqllab/1311[01;32mjoshena@joshena[00m:[01;34m~/ceccs18c33/sqllab/1311[00m$ mysql -u root -p[4Pnano app.txtmysql -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 9
+Server version: 8.0.21 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> USE lab;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> 
+[8GUSE lab;
+[8Gexit[K
+[8GDROP TABLE students;
+[8G[4@TRUNCATE TAble[32G
+[8G[9@RENAME TABLE student TO[41G
+[8GALTER TABLE student DROP COLUMN marks;
+[28GMODIFY COLUMN dept VARCHAR(10);
+[28GADD COLUMN age INT NOT NULL;[K
+[8GDESCRIBE student;[K
+[8GCREATE TABLE student ( sno INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(50) NOT NULL, marks INT NOT NULL, dept VARCHAR(20) NOT NULL );
+[8GUSE lab;[K
+[8GSHOW DATABASES;
+[8GDROP TABLE student;
+[8GUSE lab;[K
+[8GSHOW DATABASES;
+[8GALTER TABLE student ADD COLUMN age INT NOT NULL;
+[28GDROP COLUMN marks;[K
+[28GADD COLUMN age INT NOT NULL;
+[8GDESCRIBE student;[K
+[17GS[25G
+[8GCREATE TABLE student ( sno INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(50) NOT NULL, marks INT NOT NULL, dept VARCHAR(20) NOT NULL );
+[8GUSE lab;[K
+[8GSHOW DATABASES;
+[22G[K
+[21G[K
+[20G[K
+[19G[K
+[18G[K
+[17G[K
+[16G[K
+[15G[K
+[14G[K
+[13G[K
+[12G
+[11G[K
+[10G[K
+[9G[K
+[8G[KCREATE
+[13G[K
+[12G[K
+[11G[K
+[10G[K
+[9G[K
+[8G[K#1
+mysql> CREATE TABLE Employee (
+    -> `code` CHAR(4) NOT NULL,
+    ->     `name` CHAR(10) NOT NULL, 
+    ->     `designation` CHAR(30) NOT NULL, 
+    ->     `dob` DATE NOT NULL,
+    ->     `salary` NUMERIC
+    -> );
+Query OK, 0 rows affected (0.67 sec)
+
+mysql> @
+[8G[K#2
+mysql> INSERT INTO Employee (`code`, `name`, `designation`, `dob`, `salary`)
+    -> VALUES 
+    -> ("e2", "John", "Manager", "1990-4-12", 41250),
+    -> ("e1","peter", "Sales", "1994-3-22", 18500);
+Query OK, 2 rows affected (0.12 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> #3
+mysql> SELECT * FROM Employee;
++------+-------+-------------+------------+--------+
+| code | name  | designation | dob        | salary |
++------+-------+-------------+------------+--------+
+| e2   | John  | Manager     | 1990-04-12 |  41250 |
+| e1   | peter | Sales       | 1994-03-22 |  18500 |
++------+-------+-------------+------------+--------+
+2 rows in set (0.01 sec)
+
+mysql> #4
+mysql> UPDATE Employee
+    -> SET `salary` = 20000 WHERE `code` = "e1";
+Query OK, 1 row affected (0.10 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> #5
+mysql> DELETE FROM Employee WHERE `code` = "e2";
+Query OK, 1 row affected (0.11 sec)
+
+mysql> E
+[8G[Kexit
+Bye
+]0;joshena@joshena: ~/ceccs18c33/sqllab/1311[01;32mjoshena@joshena[00m:[01;34m~/ceccs18c33/sqllab/1311[00m$ nano lab2.file
+[?1049h[22;0;0t[1;38r(B[m[4l[?7h[39;49m[?1h=[?1h=[?1h=[?25l[39;49m(B[m[H[2J[36;66H(B[0;7m[ New File ](B[m[H(B[0;7m  GNU nano 2.9.3                                                     lab2.file                                                                [1;141H(B[m
+[37d(B[0;7m^G(B[m Get Help    (B[0;7m^O(B[m Write Out   (B[0;7m^W(B[m Where Is    (B[0;7m^K(B[m Cut Text    (B[0;7m^J(B[m Justify     (B[0;7m^C(B[m Cur Pos     (B[0;7mM-U(B[m Undo[106G(B[0;7mM-A(B[m Mark Text  (B[0;7mM-](B[m To Bracket
+[38d(B[0;7m^X(B[m Exit[38;16H(B[0;7m^R(B[m Read File   (B[0;7m^\(B[m Replace     (B[0;7m^U(B[m Uncut Text  (B[0;7m^T(B[m To Spell    (B[0;7m^_(B[m Go To Line  (B[0;7mM-E(B[m Redo[106G(B[0;7mM-6(B[m Copy Text  (B[0;7mM-W(B[m WhereIs Next
+[36d[3d[39;49m(B[m[?12l[?25h[?25l[1;133H(B[0;7mModified(B[m
+[3dUSE lab;
+[5d[36m#1
+[6d[39m(B[mCREATE TABLE Employee ([7;9H`code` CHAR(4) NOT NULL,[8;5H`name` CHAR(10) NOT NULL,[9;5H`designation` CHAR(30) NOT NULL,[10;5H`dob` DATE NOT NULL,[11;5H`salary` NUMERIC
+[12d);
+[14d[36m#2
+[15d[39m(B[mINSERT INTO Employee (`code`, `name`, `designation`, `dob`, `salary`)
+[16dVALUES
+[17d("e2", "John", "Manager", "1990-4-12", 41250),
+[18d("e1","peter", "Sales", "1994-3-22", 18500);
+[36d[K[18;45H[?12l[?25h[?25l[A[?12l[?25h[?25l[16;8H[?12l[?25h[?25l[15;45H[?12l[?25h[?25l[14;3H[?12l[?25h[?25l
+[A[?12l[?25h[?25l[A);[?12l[?25h[?25l[11;21H[?12l[?25h[?25l[AULL,[?12l[?25h[?25l[9;38H[?12l[?25h[?25l[8;31H[?12l[?25h[?25l[AL,[?12l[?25h[?25l[6;24H[?12l[?25h[?25l[5;3H[?12l[?25h[?25l
+[A[?12l[?25h[?25l[3;9H[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l USE lab;
+ [?12l[?25h[?25l  USE lab;
+  [?12l[?25h[?25l
+   USE lab;
+   [?12l[?25h[?25l
+    USE lab;[5G[?12l[?25h[?25l
+[1P   [?12l[?25h[?25l
+[1P  [?12l[?25h[?25l
+[1P [?12l[?25h[?25l[1P[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[2;36r[2;1HM[1;38r[4;1H[?12l[?25h[?25l[2;36r[2;1HM[1;38r[5;1H[?12l[?25h[?25l[2;36r[2;1HM[1;38r[6;1H[?12l[?25h[?25l[2;36r[2;1HM[1;38r[7;1H[?12l[?25h[?25l[2;36r[2;1HM[1;38r[8;1H[?12l[?25h[?25l[2;36r[2;1HM[1;38r[9;1H[?12l[?25h[?25l[2;36r[2;1HM[1;38r[10;1H[?12l[?25h[?25l[2;36r[2;1HM[1;38r[11;1H[?12l[?25h[?25l[2;36r[2;1HM[1;38r[12;1H[?12l[?25h[?25l[2;36r[2;1HM[1;38r[13;1H[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l*[?12l[?25h[?25l [?12l[?25h[?25lJ[?12l[?25h[?25lO[?12l[?25h[?25lS[?12l[?25h[?25lH[?12l[?25h[?25lE[?12l[?25h[?25lN[?12l[?25h[?25lA[?12l[?25h[?25l [?12l[?25h[?25lJ[?12l[?25h[?25lO[?12l[?25h[?25lS[?12l[?25h[?25lE[?12l[?25h[?25lP[?12l[?25h[?25lH[?12l[?25h[?25l7[4;36r8
+[4dM[1;38r[4;1H[?12l[?25h[?25l*[?12l[?25h[?25lS[?12l[?25h[?25l5[?12l[?25h[?25l [?12l[?25h[?25lC[?12l[?25h[?25l7[5;36r8
+[5dM[1;38r[5;1H[?12l[?25h[?25l*[?12l[?25h[?25lC[?12l[?25h[?25lH[?12l[?25h[?25lN[?12l[?25h[?25l1[?12l[?25h[?25l8[?12l[?25h[?25lC[?12l[?25h[?25lS[?12l[?25h[?25l6[?12l[?25h[?25l9[?12l[?25h[?25l7[6;36r8
+[6dM[1;38r[6;1H[?12l[?25h[?25l*[?12l[?25h[?25l [?12l[?25h[?25lR[?12l[?25h[?25l\[?12l[?25h[?25l [?12l[?25h[?25l [?12l[?25h[?25l[?12l[?25h[?25lR[?12l[?25h[?25lO[?12l[?25h[?25lL[?12l[?25h[?25lL[?12l[?25h[?25l [?12l[?25h[?25l [?12l[?25h[?25lN[?12l[?25h[?25lO[?12l[?25h[?25l:[?12l[?25h[?25l3[?12l[?25h[?25l3[?12l[?25h[?25l7[7;36r8
+[7dM[1;38r[7;1H[?12l[?25h[?25l[A[?12l[?25h[?25l*[?12l[?25h[?25lR[?12l[?25h[?25lO[?12l[?25h[?25lL[?12l[?25h[?25lLL NO:33[6G[?12l[?25h[?25l
+[7d[?12l[?25h[?25l*[?12l[?25h[?25lA[?12l[?25h[?25lP[?12l[?25h[?25lP[?12l[?25h[?25lL[?12l[?25h[?25lI[?12l[?25h[?25lC[?12l[?25h[?25lA[?12l[?25h[?25lT[?12l[?25h[?25lI[?12l[?25h[?25lO[?12l[?25h[?25lN[?12l[?25h[?25l [?12l[?25h[?25lD[?12l[?25h[?25l [?12l[?25h[?25lS[?12l[?25h[?25lO[?12l[?25h[?25lF[?12l[?25h[?25lT[?12l[?25h[?25lW[?12l[?25h[?25lA[?12l[?25h[?25lR[?12l[?25h[?25lE[?12l[?25h[?25l [?12l[?25h[?25lL[?12l[?25h[?25lA[?12l[?25h[?25lB[?12l[?25h[?25l7[8;36r8
+[8dM[1;38r[8;1H[?12l[?25h[?25l*[?12l[?25h[?25lE[?12l[?25h[?25lX[?12l[?25h[?25lP[?12l[?25h[?25lE[?12l[?25h[?25lR[?12l[?25h[?25lI[?12l[?25h[?25lM[?12l[?25h[?25lE[?12l[?25h[?25lN[?12l[?25h[?25lT[?12l[?25h[?25l [?12l[?25h[?25l2[?12l[?25h[?25l7[9;36r8
+[9dM[1;38r[9;1H[?12l[?25h[?25l*[?12l[?25h[?25l7[10;36r8[10dM[1;38r[10;1H[?12l[?25h[?25l*[?12l[?25h[?25l/[?12l[?25h[?25l
+[11d[?12l[?25h[?25l[12d[?12l[?25h[?25l[13d[?12l[?25h[?25l[14d[?12l[?25h[?25l[15d[?12l[?25h[?25l[16d[?12l[?25h[?25l[17d[?12l[?25h[?25l[18d[?12l[?25h[?25l[19d[?12l[?25h[?25l[20dUS[?12l[?25h[?25l
+[21d[?12l[?25h[?25l[AUS[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[11;36r[36;1H
+[1;38r[19;1H[?12l[?25h[?25l[11;36r[36;1H
+[1;38r[18;1H[?12l[?25h[?25l[11;36r[36;1H
+[1;38r[17;1H[?12l[?25h[?25l[11;36r[36;1H
+[1;38r[16;1H[?12l[?25h[?25l[17d[?12l[?25h[?25l[18d[?12l[?25h[?25l[19d[?12l[?25h[?25l[20d[?12l[?25h[?25l[21d[?12l[?25h[?25l[22d[?12l[?25h[?25l[23d[?12l[?25h[?25l[24d[?12l[?25h[?25l[25d[?12l[?25h[?25l[26d[?12l[?25h[?25l[27d[?12l[?25h[?25l[28d[?12l[?25h[?25l[29d[?12l[?25h[?25l[30d[?12l[?25h[?25l[31d[?12l[?25h[?25l[32d[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[3;36r[36;1H[17S[1;38r[15;1H[36m#3
+[16d[39m(B[mSELECT * FROM Employee;
+[18d[36m#4
+[19d[39m(B[mUPDATE Employee
+[20dSET `salary` = 20000 WHERE `code` = "e1";
+[22d[36m#5
+[23d[39m(B[mDELETE FROM Employee WHERE `code` = "e2";[?12l[?25h[?25l[22;3H[?12l[?25h[?25l
+[A[?12l[?25h[?25l[20;42H[?12l[?25h[?25l[19;16H[?12l[?25h[?25l[18;3H[?12l[?25h[?25l
+[A[?12l[?25h[?25l[16;24H[?12l[?25h[?25l[15;3H[?12l[?25h[?25l[14;42H[?12l[?25h[?25l0[?12l[?25h[?25l)[?12l[?25h[?25l;[?12l[?25h[?25l
+[15d[?12l[?25h[?25l[36m #3[39m(B[m[?12l[?25h[?25l[36m  #3[39m(B[m[?12l[?25h[?25l
+[36m   #3[39m(B[m[?12l[?25h[?25l
+[36m  #3[39m(B[m[K[?12l[?25h[?25l
+[36m #3[39m(B[m[K[?12l[?25h[?25l[36m#3[39m(B[m[K
+[?12l[?25h[?25l7[15;36r8M[1;38r[16;1H[?12l[?25h[?25l[17d[?12l[?25h[?25l[18d[?12l[?25h[?25l[19d[?12l[?25h[?25l[18;36r[18;1HM[1;38r[20;1H[?12l[?25h[?25l[21d[?12l[?25h[?25l[22d[?12l[?25h[?25l[23d[?12l[?25h[?25l[24d[?12l[?25h[?25l[23;36r[36;1H
+[1;38r[23;1H[?12l[?25h[?25l7[23;36r8M[1;38r[24;1H[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[2;36r[2;1H[17T[1;38r[3;1H* JOSHENA JOSEPH
+[4d*S5 C
+[5d*CHN18CS69
+[6d*ROLL NO:33
+[7d*APPLICATION SOFTWARE LAB
+[8d*EXPERIMENT 2
+[9d*[10d*/
+[16dUSE lab;
+[18d[36m#1
+[19d[39m(B[mCREATE TABLE Employee (
+[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[10d[?12l[?25h[?25l[11d[?12l[?25h[?25l[12d[?12l[?25h[?25l[13d[?12l[?25h[?25l[14d[?12l[?25h[?25l[15d[?12l[?25h[?25l[16d[?12l[?25h[?25l[17d[?12l[?25h[?25l[18d[?12l[?25h[?25l[19d[?12l
