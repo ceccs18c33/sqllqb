@@ -1,0 +1,75 @@
+Script started on 2020-11-20 16:01:36+0530
+]0;joshena@joshena: ~/ceccs18c33/sqllab/lab3[01;32mjoshena@joshena[00m:[01;34m~/ceccs18c33/sqllab/lab3[00m$ mysql -u root -p[1Pscript work.txt[8Pcd lab3script work.txtmysql -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 17
+Server version: 8.0.21 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use lab;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> create table employe(
+    -> empid CHAR(4) ,
+    -> name CHAR(10) not null, 
+    -> designation CHAR(30) not null,
+    -> dob date not null,
+    -> salary numeric
+    -> );
+Query OK, 0 rows affected (1.56 sec)
+
+mysql> create table employdetails(
+    -> sex char(1),
+    -> nationality char(10),
+    -> gno int,
+    -> primary key (gno),
+    -> empid char(4) references employee(empid)
+    -> );
+
+Query OK, 0 rows affected (1.50 sec)
+
+mysql> 
+mysql> insert into employe values
+    -> ("e1","Steve","CO","1922-3-11","45250"),
+    -> ("e2","Bert","XO","1980-5-4","22380");
+Query OK, 2 rows affected (0.16 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> insert into employdetails values 
+    -> ("M","Serbian","27","e2"),
+    -> ("M","Spaniard","56","e5");
+Query OK, 2 rows affected (0.18 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from employe [29G[28G[Ke  where empid in (select empid from employdetails);[30G[Pw
++-------+------+-------------+------------+--------+
+| empid | name | designation | dob        | salary |
++-------+------+-------------+------------+--------+
+| e2    | Bert | XO          | 1980-05-04 |  22380 |
++-------+------+-------------+------------+--------+
+1 row in set (0.00 sec)
+
+mysql> select * from employe  where empid not in(select empid from employdetails );[A[80G[30G[P[80G));[K[A[30G
+
++-------+-------+-------------+------------+--------+
+| empid | name  | designation | dob        | salary |
++-------+-------+-------------+------------+--------+
+| e1    | Steve | CO          | 1922-03-11 |  45250 |
++-------+-------+-------------+------------+--------+
+1 row in set (0.00 sec)
+
+mysql> exit
+Bye
+]0;joshena@joshena: ~/ceccs18c33/sqllab/lab3[01;32mjoshena@joshena[00m:[01;34m~/ceccs18c33/sqllab/lab3[00m$ exit
+exit
+
+Script done on 2020-11-20 16:05:10+0530
