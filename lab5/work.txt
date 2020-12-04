@@ -1,0 +1,249 @@
+Script started on 2020-12-04 14:58:02+0530
+]0;joshena@joshena: ~/ceccs18c33/sqllab/lab5[01;32mjoshena@joshena[00m:[01;34m~/ceccs18c33/sqllab/lab5[00m$ cd ceccs18c33\script work.txt[8Pcd lab5[3@mkdir[C[C[C[C[C[1Pcd sqllabceccs18c33exit[Kmysql -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 10
+Server version: 8.0.21 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> USE lab;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> CREATE TABLE Class (
+    -> `id` INT PRIMARY KEY AUTO_INCREMENT,
+    ->     `name` VARCHAR(50)
+    -> );
+Query OK, 0 rows affected (0.67 sec)
+
+mysql> 
+mysql> INSERT INTO Class (`name`) VALUES ("LALAMAN"), ("SUSMA"), ("BEEKER")[75GS
+[7@mysql> [50G[P
+[49G[P""), ("SUSM ("SUSMA"), ("BEEKER")
+[73G[K
+[72G[K
+[71G[K
+[70G[K
+[69G[K
+[68G[K
+[67G[K
+[66G[K
+[65G[K
+[64G[K
+[63G
+[62G[K
+[61G[K
+[60G[K
+[59G[K
+[58G[K
+[57G[K
+[56G[K
+[55G[K
+[54G[K
+[53G[K
+[52G
+[51G[K
+[50G[K
+[49G[K
+[48G[K
+[47G[K
+[46G[K
+[45G[K
+[44G[K
+[43G[K
+[42G[K
+[41G
+[40G[K
+[39G[K
+[38G[K
+[37G[K
+[36G[K
+[35G[K
+[34G
+[33G[K
+[32G[K
+[31G[K
+[30G[K
+[29G[K
+[28G[K
+[27G[K
+[26G[K
+[25G
+[24G[K
+[23G[K
+[22G[K
+[21G[K
+[20G[K
+[19G
+[18G[K
+[17G[K
+[16G[K
+[15G[K
+[14G
+[13G[K
+[12G[K
+[11G[K
+[10G[K
+[9G[K
+[8G[KINSERT INTO Class (`name`) VALUES ("LALAMAN"), ("SUSMA"), ("BEEKER")
+[51G[P)
+[50G[P)
+[49G[P)
+[48G[P)
+[47G[P)
+[46G[P)
+[45G[P)
+[44G[P)
+[44G[1@j)
+[45G[1@e)
+[46G[1@z)
+[46G[P)
+[45G[P)
+[44G[P)
+[44G[1@J)
+[45G[1@E)
+[46G[1@Z)
+[47G[1@")), ("SUSMA
+[57G[P"
+[56G[P"
+[55G[P"
+[54G[P"
+[54G[1@A"
+[55G[1@M""), ("BEEKER
+[67G")[K
+[66G")[K
+[65G")[K
+[64G")[K
+[63G")[K
+[62G")[K
+[62GR")
+[63GE")
+[63G")[K
+[62G")[K
+[62GJ")
+[63GO")
+[64GS")
+[65GH")");
+Query OK, 3 rows affected (0.16 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM Class;
++----+------+
+| id | name |
++----+------+
+|  1 | JEZ  |
+|  2 | SAM  |
+|  3 | JOSH |
++----+------+
+3 rows in set (0.00 sec)
+
+mysql> START TRANSACTION;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> INSERT INTO Class (`name`) VALUES ("NEWMAN")"
+[49G")[K
+[48G")[K
+[47G")[K
+[46G")[K
+[45G")[K
+[44G")[K
+[44GC")
+[45GH")
+[46GR")
+[47GI")
+[48GS")");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> ROLLBACK; 
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> INSERT INTO Class (`name`) VALUES ("NEWMAN"
+[49G"[K
+[48G"[K
+[47G"[K
+[46G"[K
+[45G"[K
+[44G"[K
+[44GC"
+[45GH"
+[46GR"
+[47GI"
+[48GS"
+[50G"
+[50G)""
+[51G[K;
+Query OK, 1 row affected (0.11 sec)
+
+mysql> COMMIT;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> 
+[8GCOMMIT;
+[8GINSERT INTO Class (`name`) VALUES ("CHRIS");
+[8GROLLBACK;[K
+[8GINSERT INTO Class (`name`) VALUES ("CHRIS");
+[8GSTART TRANSACTION;[K
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> SAVEPOINT BeforeEvilEra;
+[30G;[K
+[29G;[K
+[28G;[K
+[27G;[K
+[26G;[K
+[25G;[K
+[24G;[K
+[24GM;
+[25GI;
+[26GN;
+[26G;[K
+[25G;[K
+[24G;[K
+[24GR;
+[25GA;
+[26GZ;
+[27GZ;
+[27G;[K
+[27GZ;;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> INSERT INTO Class (`name`) VALUES ("EVILERA"
+[51G[K
+[50G[K
+[49G[K
+[48G[K
+[47G[K
+[46G[K
+[45G[K
+[44G[KRAZZ");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> ROLLBACK TO BeforeRAZZ;
+[30G[K
+[29G[K
+[28G[K
+[27G[K
+[26G[KRAZZ;
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> COMMIT;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> EXIT
+mysql> EXI[K
+[10G[K
+[9G[K
+[8G[Kexit
+Bye
+]0;joshena@joshena: ~/ceccs18c33/sqllab/lab5[01;32mjoshena@joshena[00m:[01;34m~/ceccs18c33/sqllab/lab5[00m$ exit
+exit
+
+Script done on 2020-12-04 15:12:39+0530
