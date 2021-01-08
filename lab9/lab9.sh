@@ -1,33 +1,31 @@
-#a
-CREATE TABLE Store (
-	`order_no` INTEGER PRIMARY KEY AUTO_INCREMENT,
-    `code` VARCHAR(20) NOT NULL,
-    `item` VARCHAR(30) NOT NULL,
-    `quantity` INTEGER UNSIGNED DEFAULT 1,
-    `price` DECIMAL(10,2) NOT NULL,
-    `discount` DECIMAL(2,2) DEFAULT 0,
-    `mrp` DECIMAL(10,2) NOT NULL
+CREATE TABLE Employee(
+    code CHAR(4) PRIMARY KEY,
+    name VARCHAR(60),
+    dob DATE,
+    designation VARCHAR(80),
+    salary FLOAT
 );
 
+INSERT INTO Employee(code, name, dob, designation, salary)
+VALUES ('js69','Joshena Joseph','HR', 190000.56),('jb20','jobz','2000-01-12','Manager',18000.56),('am13','Ameya','1998-08-02','Clerk',59000.7);
 
-#b
-INSERT INTO Store (`code`, `item`, `quantity`, `price`, `discount`, `mrp`) 
-VALUES ("PST", "PASTE", 2, 20, 0, 20),("BOK", "NOTEBOOK", 10, 45, 0.1, 50);
+#2
+SELECT * FROM Employee ORDER BY name DESC;
 
-#c
-SELECT * FROM Store;
+#3
+CREATE TABLE Deposit(
+    baccno BIGINT,
+    branch_name VARCHAR(60),
+    amount FLOAT
+);
 
+INSERT INTO Deposit(baccno, branch_name, amount)
+VALUES ('kollam',290000.25),
+(135556,'palakaad',291233.22),
+(135557,'thrissur',123570.1),
+(135558,'palakkad',2239083.78),
+(13559,'alapuzha',100090.90);
 
-#d
-CREATE VIEW CART AS
-SELECT `item`, `quantity` FROM Store;
-
-#e
-INSERT INTO Store (`code`, `item`, `quantity`, `price`, `discount`, `mrp`) 
-VALUES ("GLD", "GOLD", 10, 5000, 0, 5000);
-
-SELECT * FROM CART;
-
-#f
-DROP VIEW CART;
+#4
+SELECT branch_name,COUNT(baccno),SUM(amount) FROM Deposit GROUP BY branch_name;
 
