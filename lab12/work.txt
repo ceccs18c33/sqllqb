@@ -1,0 +1,129 @@
+Script started on 2021-01-25 10:23:08+0530
+]0;joshena@joshena: ~/ceccs18c33/sqllab/lab12[01;32mjoshena@joshena[00m:[01;34m~/ceccs18c33/sqllab/lab12[00m$ nano lab11.shbash[C[C[C[C[C[C[C[C[Cscript work.txt[7Pcd lab11script work.txt[2Pbash lab11.shnano[C[C[C[C[C[C[C[C[C[Knano lab11.shbash[C[C[C[C[C[C[C[C[Cscript work.txt[7Pcd lab11[3@mkdir[C[C[C[C[C[C[2Pcd sqllabceccs18c33exit[Kmysql -u root -p[1Pscript work.txtmysql -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.21 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> USE lab
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> CREATE TABLE SAILORS(
+    -> SID INT PRIMARY KEY,
+    ->  SNAME CHAR(25),
+    ->  RATING FLOAT,
+    ->  AGE INT);
+Query OK, 0 rows affected (0.96 sec)
+
+mysql> INSERT INTO SAILORS VALUES ('76843','RAM',3.9,45);
+Query OK, 1 row affected (0.11 sec)
+
+mysql> INSERT INTO SAILORS VALUES ('35689','JITH',4.2,32);
+Query OK, 1 row affected (0.17 sec)
+
+mysql> INSERT INTO SAILORS VALUES ('76743','BOB',4.5,36);
+Query OK, 1 row affected (0.11 sec)
+
+mysql> CREATE TABLE BOATS(
+    ->  BID INT PRIMARY KEY,
+    ->   BNAME CHAR(20),
+    ->  COLOUR CHAR(10)
+    ->  );
+Query OK, 0 rows affected (1.15 sec)
+
+mysql> INSERT INTO BOATS VALUES ('101','GLORY','RED');
+Query OK, 1 row affected (0.13 sec)
+
+mysql> INSERT INTO BOATS VALUES ('106','BEN','YELLOW');
+Query OK, 1 row affected (0.14 sec)
+
+mysql> INSERT INTO BOATS VALUES ('103','ROLLS','BLUE');
+Query OK, 1 row affected (0.17 sec)
+
+mysql> CREATE TABLE RESERVES(
+    ->   SID INT,
+    ->   BID INT,
+    ->   DAY DATE
+    ->  );
+Query OK, 0 rows affected (1.14 sec)
+
+mysql> INSERT INTO RESERVES VALUES ('76743','101','2021/01/10');
+Query OK, 1 row affected (0.13 sec)
+
+mysql> INSERT INTO RESERVES VALUES ('76843','106','2021/01/11');
+Query OK, 1 row affected (0.20 sec)
+
+mysql> INSERT INTO RESERVES VALUES ('76743','103','2021/01/10');
+Query OK, 1 row affected (0.10 sec)
+
+mysql> INSERT INTO RESERVES VALUES ('76843','103','2021/01/11');
+Query OK, 1 row affected (0.20 sec)
+
+mysql> 
+mysql> SELECT A.SID, A.SNAME, A.RATING, A.AGE
+    -> FROM SAILORS AS A
+    -> INNER JOIN RESERVES AS C ON A.SID = C.SID AND C.BID = 101;
++-------+-------+--------+------+
+| SID   | SNAME | RATING | AGE  |
++-------+-------+--------+------+
+| 76743 | BOB   |    4.5 |   36 |
++-------+-------+--------+------+
+1 row in set (0.00 sec)
+
+mysql> SELECT B.BNAME
+    -> FROM RESERVES AS C
+    -> INNER JOIN SAILORS AS A ON A.SID =C.SID AND A.SNAME='BOB'
+    -> INNER JOIN BOATS AS B ON B.BID=C.BID;
++-------+
+| BNAME |
++-------+
+| GLORY |
+| ROLLS |
++-------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT A.SNAME
+    -> FROM SAILORS AS A
+    -> INNER JOIN RESERVES AS C ON A.SID = C.SID
+    -> INNER JOIN BOATS AS B ON B.BID = C.BID AND B.COLOUR = 'RED'
+    -> ORDER BY A.AGE;
++-------+
+| SNAME |
++-------+
+| BOB   |
++-------+
+1 row in set (0.00 sec)
+
+mysql> SELECT DISTINCT A.SNAME
+    -> FROM SAILORS AS A
+    -> INNER JOIN RESERVES AS C ON A.SID IN (C.SID);
++-------+
+| SNAME |
++-------+
+| BOB   |
+| RAM   |
++-------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT A.SID , A.SNAME
+    -> FROM RESERVES AS C
+    -> INNER JOIN RESERVES AS D ON C.SID <> D.SID AND C.DAY=D.DAY
+    -> INNER JOIN SAILORS AS A ON D.SID=A.SID;
+Empty set (0.00 sec)
+
+mysql> exit
+Bye
+]0;joshena@joshena: ~/ceccs18c33/sqllab/lab12[01;32mjoshena@joshena[00m:[01;34m~/ceccs18c33/sqllab/lab12[00m$ exoi[K[Kit
+exit
+
+Script done on 2021-01-25 10:39:54+0530
